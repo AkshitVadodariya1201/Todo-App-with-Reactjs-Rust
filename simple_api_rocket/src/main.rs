@@ -18,7 +18,7 @@ fn rocket() -> _ {
     let cors = CorsOptions::default()
         .allowed_origins(AllowedOrigins::some_exact(&[
             "http://localhost:3000",
-            "https://hoppscotch.io/"
+            "https://hoppscotch.io/",
         ]))
         .allowed_methods(
             vec![Method::Get, Method::Post, Method::Patch, Method::Delete]
