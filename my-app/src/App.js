@@ -1,26 +1,40 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import "./App.css";
-import MyForm from "./form";
-import Data from "./Data";
 
 function App() {
-  const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState([]);
-  const [editData, setEditData] = useState(null);
+  const [list, setList] = useState([]);
+  const [newTitle, setNewTitle] = useState('');
+  const [newContent, setNewContent] = useState('');
+  const [editingId, setEditingId] = useState(null);
+  const [tempTitle, setTempTitle] = useState('');
+  const [tempContent, setTempContent] = useState('');
 
-  function getTodos(page = 1, limit = 10) {
-    fetch(`http://localhost:8000/api/todos?page=${page}&limit=${limit}`)
-      .then(response => response.json())
-      .then(data => console.log(data.todos))
-      .catch(error => console.error('Error:', error));
+
+  async function getTodos(page = 1, limit = 10) {
+    try {
+      const response = await fetch(`http://localhost:8000/api/todos?page=${page}&limit=${limit}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setList(data.todos);
+      console.log(data.todos);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 
-  function createTodo(title, content) {
+  function createTodo() {
+    // Check if either newTitle or newContent is empty
+    if (!newTitle.trim() || !newContent.trim()) {
+      alert("Title and content cannot be empty.");
+      return; // Exit the function early if validation fails
+    }
+
     let data = {
-      title: title,
-      content: content,
-      completed: false
+      title: newTitle,
+      content: newContent,
+      completed: false // Assuming new todos are not completed by default
     };
 
     fetch("http://localhost:8000/api/todos", {
@@ -39,83 +53,159 @@ function App() {
         }
         return response.json();
       })
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data);
+        getTodos(); // Refresh the list after adding
+      })
       .catch(error => console.error('Error:', error));
   }
 
-  function handleButtonClick() {
-    setEditData(null);
-    setShowForm(true);
+
+
+  function handleToggle(todoId, completed) {
+    fetch(`http://localhost:8000/api/todos/${todoId}`, {
+      method: "PATCH", // Updated to PATCH method
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        completed: completed,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Todo updated:", data);
+        getTodos(); // Refresh the list to reflect the changes
+      })
+      .catch(error => console.error('Error:', error));
   }
 
-  function handleCancel() {
-    setShowForm(false);
-  }
-
-  function handleFormSubmit(data) {
-    if (editData) {
-      setFormData((prevData) =>
-        prevData.map((d) => (d === editData ? data : d))
-      );
-    } else {
-      setFormData((prevData) => [...prevData, data]);
+  function handleDelete(todoId) {
+    // Confirmation dialog
+    const isConfirmed = window.confirm("Are you sure you want to delete?");
+    if (!isConfirmed) {
+      return; // Exit the function if the user clicks Cancel
     }
-    setShowForm(false);
+
+    fetch(`http://localhost:8000/api/todos/${todoId}`, {
+      method: "DELETE",
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        getTodos(); // Refresh the list after deleting
+      })
+      .catch(error => console.error('Error:', error));
   }
 
-  function handleEditButtonClick(data) {
-    setEditData(data);
-    setShowForm(true);
+  function handleUpdate(todoId, newTitle, newContent) {
+    fetch(`http://localhost:8000/api/todos/${todoId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: newTitle,
+        content: newContent,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        getTodos(); // Refresh the list to reflect the changes
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  function startEdit(todoId, title, content) {
+    setEditingId(todoId);
+    setTempTitle(title);
+    setTempContent(content);
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
+    setTempTitle('');
+    setTempContent('');
+  }
+
+  function saveEdit(todoId) {
+    handleUpdate(todoId, tempTitle, tempContent);
+    cancelEdit();
   }
 
   return (
-    <Router>
+    <>
       <div className="App">
-        <h1>My First React App</h1>
-        <button onClick={handleButtonClick}>Click Me</button>
-        <button onClick={getTodos}>Click getData</button>
-        <button onClick={createTodo("rust!", "dev")}>Click PostData</button>
-        <div className="content">
-          {formData.length > 0 && (
-            <table>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Email</th>
-                <th>Edit</th>
-              </tr>
-              {formData.map((data, index) => (
-                <tr key={index}>
-                  <td>
-                    <Link to={`/data/${index}`}>{data.name}</Link>
-                  </td>
-                  <td>{data.age}</td>
-                  <td>{data.email}</td>
-                  <td>
-                    <button onClick={() => handleEditButtonClick(data)}>
-                      Edit
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </table>
-          )}
+        <h1>Art Bucket List</h1>
+        <h2>My list of art to see:</h2>
+        <div className="button-container">
+          <button onClick={() => getTodos()}>Get Todos</button>
+          <input
+            type="text"
+            placeholder="New Todo Title"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="New Todo Content"
+            value={newContent}
+            onChange={(e) => setNewContent(e.target.value)}
+          />
+          <button onClick={createTodo}>Create New Todo</button>
         </div>
-        {showForm && (
-          <MyForm
-            onCancel={handleCancel}
-            onSubmit={handleFormSubmit}
-            editData={editData}
-          />
-        )}
-        <Routes>
-          <Route
-            path="/data/:id"
-            render={(props) => <Data {...props} data={formData} />}
-          />
-        </Routes>
+        <ItemList
+          artworks={list}
+          onToggle={handleToggle}
+          onDelete={handleDelete}
+          onUpdate={startEdit}
+          editingId={editingId}
+          tempTitle={tempTitle}
+          setTempTitle={setTempTitle}
+          tempContent={tempContent}
+          setTempContent={setTempContent}
+          cancelEdit={cancelEdit}
+          saveEdit={saveEdit}
+        />
       </div>
-    </Router>
+    </>
   );
 }
+
+function ItemList({ artworks, onToggle, onDelete, onUpdate, editingId, tempTitle, setTempTitle, tempContent, setTempContent, cancelEdit, saveEdit }) {
+  return (
+    <ul className="list-items">
+      {artworks.map(artwork => (
+        <li key={artwork.id}>
+          {editingId === artwork.id ? (
+            <>
+              <input value={tempTitle} onChange={(e) => setTempTitle(e.target.value)} />
+              <input value={tempContent} onChange={(e) => setTempContent(e.target.value)} />
+              <button onClick={() => saveEdit(artwork.id)}>Save</button>
+              <button onClick={cancelEdit}>Cancel</button>
+            </>
+          ) : (
+            <>
+              <label>
+                <input type="checkbox" checked={artwork.completed} onChange={e => onToggle(artwork.id, e.target.checked)} />
+                {artwork.title}
+              </label>
+              <button onClick={() => onDelete(artwork.id)}>Delete</button>
+              <button onClick={() => onUpdate(artwork.id, artwork.title, artwork.content)}>Update</button>
+            </>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default App;

@@ -15,15 +15,13 @@ mod response;
 
 #[launch]
 fn rocket() -> _ {
-    let app_data = model::AppState::init();
-
     let cors = CorsOptions::default()
         .allowed_origins(AllowedOrigins::some_exact(&[
             "http://localhost:3000",
-            "https://hoppscotch.io/"
+            "https://hoppscotch.io/",
         ]))
         .allowed_methods(
-            vec![Method::Get, Method::Post, Method::Put, Method::Delete]
+            vec![Method::Get, Method::Post, Method::Patch, Method::Delete]
                 .into_iter()
                 .map(From::from)
                 .collect(),
@@ -33,7 +31,6 @@ fn rocket() -> _ {
         .expect("error while building CORS");
 
     rocket::build()
-        .manage(app_data)
         .mount(
             "/api",
             routes![

@@ -1,6 +1,5 @@
 use chrono::prelude::*;
 use serde::{Deserialize, Serialize};
-use std::sync::{Arc, Mutex};
 
 #[allow(non_snake_case)]
 #[derive(Debug, Deserialize, Serialize, Clone)]
@@ -11,18 +10,6 @@ pub struct Todo {
     pub completed: Option<bool>,
     pub createdAt: Option<DateTime<Utc>>,
     pub updatedAt: Option<DateTime<Utc>>,
-}
-
-pub struct AppState {
-    pub todo_db: Arc<Mutex<Vec<Todo>>>,
-}
-
-impl AppState {
-    pub fn init() -> AppState {
-        AppState {
-            todo_db: Arc::new(Mutex::new(Vec::new())),
-        }
-    }
 }
 
 #[allow(non_snake_case)]
