@@ -15,6 +15,9 @@ mod response;
 
 #[launch]
 fn rocket() -> _ {
+    // CORS
+    // This is a simple example of how to configure CORS for Rocket.
+    // You can customize the configuration as needed.
     let cors = CorsOptions::default()
         .allowed_origins(AllowedOrigins::some_exact(&[
             "http://localhost:3000",
@@ -30,6 +33,8 @@ fn rocket() -> _ {
         .to_cors()
         .expect("error while building CORS");
 
+    // Rocket instance
+    // Mount the routes and attach the CORS configuration
     rocket::build()
         .mount(
             "/api",
