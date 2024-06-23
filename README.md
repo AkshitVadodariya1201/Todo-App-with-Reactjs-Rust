@@ -34,8 +34,10 @@ This project supports light and dark modes for a better user experience. The mod
 ![Dark Mode](assets/desktop-dark.png)
 
 ### Mobile
-<img src="assets/mobile-light.jpeg" width="300" height="600"> 
-<img src="assets/mobile-dark.jpeg" width="300" height="600">
+<p  align="center">
+<img src="assets/mobile-light.jpeg" width="300" height="600">        &nbsp; &nbsp; &nbsp; &nbsp;                   <img src="assets/mobile-dark.jpeg" width="300" height="600">
+  
+</p>
 
 
 
