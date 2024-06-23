@@ -1,8 +1,8 @@
 ---
-name: ✨ Feature Request
-about: "Dream big, share your feature idea, and join the brainstorming squad to shape the future together!"
-title: "✨ "
-labels: ["type: feature request :sparkles:"]
+name: 🚨 Security Report
+about: Security heroes needed! Share your findings and join the team to fortify our defences.
+title: "🚨 "
+labels: ["type: security report :rotating_light:"]
 projects: []
 assignees:
 ---

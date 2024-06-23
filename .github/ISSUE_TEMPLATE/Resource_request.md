@@ -1,8 +1,8 @@
 ---
-name: ✨ Feature Request
-about: "Dream big, share your feature idea, and join the brainstorming squad to shape the future together!"
-title: "✨ "
-labels: ["type: feature request :sparkles:"]
+name: 🔋 Resource Request
+about: Level up productivity! Share your resource/hardware needs and join the team on its journey.
+title: "🔋 "
+labels: ["type: resource request :battery:"]
 projects: []
 assignees:
 ---

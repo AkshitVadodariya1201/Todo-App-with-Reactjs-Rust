@@ -1,8 +1,8 @@
 ---
-name: ✨ Feature Request
-about: "Dream big, share your feature idea, and join the brainstorming squad to shape the future together!"
-title: "✨ "
-labels: ["type: feature request :sparkles:"]
+name: New Issue
+about: Let's team up! Craft a crystal-clear issue so we can solve it together, fast.
+title: ""
+labels:
 projects: []
 assignees:
 ---

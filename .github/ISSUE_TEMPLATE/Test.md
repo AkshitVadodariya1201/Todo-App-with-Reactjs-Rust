@@ -1,8 +1,8 @@
 ---
-name: ✨ Feature Request
-about: "Dream big, share your feature idea, and join the brainstorming squad to shape the future together!"
-title: "✨ "
-labels: ["type: feature request :sparkles:"]
+name: 🚦 Test
+about: Scenario unlocked! Let's build a shield of test cases for bulletproof functionality.
+title: "🚦 "
+labels: ["type: test :vertical_traffic_light:"]
 projects: []
 assignees:
 ---

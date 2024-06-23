@@ -1,8 +1,8 @@
 ---
-name: ✨ Feature Request
-about: "Dream big, share your feature idea, and join the brainstorming squad to shape the future together!"
-title: "✨ "
-labels: ["type: feature request :sparkles:"]
+name: 🏳️ Feature Flag
+about: "Experiment safely! Refine & iterate on impactful features, collaboratively."
+title: "🏳️ "
+labels: ["type: feature flag :white_flag:"]
 projects: []
 assignees:
 ---

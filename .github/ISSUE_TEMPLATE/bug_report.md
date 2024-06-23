@@ -1,38 +1,41 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: bug
-assignees: ''
-
+name: 🐞 Bug Report
+about: Spot a bug? Let's squash it together and make this project even better!
+title: "🐞 "
+labels: ["type: bug :lady_beetle:"]
+projects: []
+assignees:
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+> [!CAUTION]
+> Embrace AI's 10x power, or watch the future built without you. :robot:
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## User role
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+1.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Intended Outcome
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+1.
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+## Benefits
 
-**Additional context**
-Add any other context about the problem here.
+1.
+
+## How it'll work
+
+1.
+
+## Acceptance Criteria
+
+1.
+
+## Context
+
+1.
+
+If needed, feel free to add an alert using the format described in the [GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)
+
+```[tasklist]
+### Tasks
+```

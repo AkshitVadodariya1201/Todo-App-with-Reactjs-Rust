@@ -1,8 +1,8 @@
 ---
-name: ✨ Feature Request
-about: "Dream big, share your feature idea, and join the brainstorming squad to shape the future together!"
-title: "✨ "
-labels: ["type: feature request :sparkles:"]
+name: 🙋 Workflow Request
+about: Empower collaboration! Share your workflow needs and join the team on its journey.
+title: "🙋 "
+labels: ["type: workflow request :raising_hand:"]
 projects: []
 assignees:
 ---

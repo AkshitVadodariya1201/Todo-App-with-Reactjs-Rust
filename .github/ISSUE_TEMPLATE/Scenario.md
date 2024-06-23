@@ -1,8 +1,8 @@
 ---
-name: ✨ Feature Request
-about: "Dream big, share your feature idea, and join the brainstorming squad to shape the future together!"
-title: "✨ "
-labels: ["type: feature request :sparkles:"]
+name: 🧩 Scenario
+about: Fresh feature unlocked! Let's craft a stellar scenario to bring it to life.
+title: "🧩 "
+labels: ["type: scenario :jigsaw:"]
 projects: []
 assignees:
 ---
