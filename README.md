@@ -45,4 +45,4 @@ This project supports light and dark modes for a better user experience. The mod
 Contributions are welcome! Please read the [contributing guide](CONTRIBUTING.md) for more information.
 
 ## License
-This project is licensed under the [MIT License](LICENSE.md).
+This project is licensed under the [MIT License](LICENSE).
