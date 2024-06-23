@@ -24,6 +24,21 @@ The backend server provides the following API endpoints:
 - `PUT /api/todos/:id`: Updates a specific todo.
 - `DELETE /api/todos/:id`: Deletes a specific todo.
 
+## Light/Dark Mode Support
+This project supports light and dark modes for a better user experience. The mode can be toggled within the application settings.
+
+## Screenshots
+### Desktop
+![Light Mode](assets/desktop-light.png)
+
+![Dark Mode](assets/desktop-dark.png)
+
+### Mobile
+<img src="assets/mobile-light.jpeg" width="300" height="600"> 
+<img src="assets/mobile-dark.jpeg" width="300" height="600">
+
+
+
 ## Contributing
 Contributions are welcome! Please read the [contributing guide](CONTRIBUTING.md) for more information.
 
