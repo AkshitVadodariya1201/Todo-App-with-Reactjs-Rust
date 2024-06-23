@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import LightDark from "./components/LightDark";
 
 function App() {
   const [list, setList] = useState([]);
@@ -144,8 +145,9 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>Art Bucket List</h1>
-        <h2>My list of art to see:</h2>
+        <LightDark />
+        <h1>Todo App</h1>
+        <h2>My list of todo to see:</h2>
         <div className="button-container">
           <button onClick={() => getTodos()}>Get Todos</button>
           <input
