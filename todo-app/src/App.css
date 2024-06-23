@@ -78,6 +78,7 @@ ul li {
 @media (max-width: 768px) {
   .button-container {
     flex-direction: column;
+    align-items: stretch;
   }
 }
 
