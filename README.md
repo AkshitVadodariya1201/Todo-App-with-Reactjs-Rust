@@ -6,15 +6,15 @@
 This project is a Todo List application built with React.js for the frontend and Rust for the backend.
 
 ## Frontend
-The frontend of the application is located in the [my-app](my-app/) directory. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The main application code can be found in [my-app/src/App.js](my-app/src/App.js).
+The frontend of the application is located in the [todo-app](todo-app/) directory. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The main application code can be found in [todo-app/src/App.js](todo-app/src/App.js).
 
 ## Backend
-The backend of the application is located in the [simple_api_rocket](simple_api_rocket/) directory. It uses the Rocket framework for Rust. The main server code can be found in [simple_api_rocket/src/main.rs](simple_api_rocket/src/main.rs).
+The backend of the application is located in the [todo_simple_api_rocket](todo_todo_simple_api_rocket) directory. It uses the Rocket framework for Rust. The main server code can be found in [todo_simple_api_rocket/src/main.rs](todo_todo_simple_api_rocket/src/main.rs).
 
 ## Running the Project
-To run the frontend of the application, navigate to the `my-app` directory and run `npm start`. To build the frontend for production, run `npm run build`.
+To run the frontend of the application, navigate to the `todo-app` directory and run `npm start`. To build the frontend for production, run `npm run build`.
 
-To run the backend of the application, navigate to the `simple_api_rocket` directory and use the command `cargo run`.
+To run the backend of the application, navigate to the `todo_simple_api_rocket` directory and use the command `cargo run`.
 
 ## API Endpoints
 The backend server provides the following API endpoints:

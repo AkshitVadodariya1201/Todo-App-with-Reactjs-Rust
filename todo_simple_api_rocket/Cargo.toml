@@ -1,5 +1,5 @@
 [package]
-name = "simple_api_rocket"
+name = "todo_simple_api_rocket"
 version = "0.1.0"
 edition = "2021"
 
