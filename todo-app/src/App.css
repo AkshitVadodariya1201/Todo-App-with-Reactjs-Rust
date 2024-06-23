@@ -1,3 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+:root {
+  --primary-color: #3265c9;
+  --secondary-color: #61dafb;
+  --background-color-light: #fff;
+  /* Light mode background color */
+  --background-color-dark: #292c35;
+  /* Dark mode background color */
+  --text-color-light: #000;
+  /* Light mode text color */
+  --text-color-dark: #fff;
+  /* Dark mode text color */
+  --btn-state: #000;
+  /* Button hover and active state color */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.2s linear, color 0.2s linear;
+}
+
+body.dark {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -6,45 +46,10 @@
   gap: 1em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .button-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1em;
 }
 
@@ -68,4 +73,160 @@ ul li {
   align-items: center;
   justify-content: center;
   gap: 1em;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+  }
+}
+
+/* Updated input field and button styles */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+button {
+  background-color: var(--primary-color);
+  font-size: 16px;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    background-color: var(--btn-state);
+    box-shadow: 9px 9px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  &:active {
+    background-color: var(--btn-state);
+    box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
+    /* Reset shadow on active for light mode */
+  }
+
+  &:focus {
+    background-color: var(--btn-state);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+    animation: click-animation 0.2s linear;
+  }
+}
+
+@keyframes click-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+body.dark {
+  button {
+    box-shadow: 5px 5px 4px rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      box-shadow: 9px 9px 8px rgba(255, 255, 255, 0.15);
+    }
+
+    &:active {
+      box-shadow: 9px 9px 4px rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.light-dark-switch {
+  border-radius: 50px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 9px 9px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  &:active {
+    box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(97, 218, 251, 0.4);
+  }
+}
+
+body.dark {
+  .light-dark-switch {
+    box-shadow: 5px 5px 4px rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      box-shadow: 9px 9px 8px rgba(255, 255, 255, 0.15);
+    }
+
+    &:active {
+      box-shadow: 9px 9px 4px rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: #111;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
+}
+
+.checkbox-label .ball {
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(24px);
 }
